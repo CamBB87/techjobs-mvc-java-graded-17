@@ -33,11 +33,12 @@ public class SearchController {
     public String displaySearchResults(Model model,@RequestParam String searchType, @RequestParam String searchTerm) {
         List<Job> jobs;
 
+        //checks to see if it should display all job listings
         if ("all".equalsIgnoreCase(searchTerm) || searchTerm.isEmpty()) {
-            // Call findAll() method from JobData
+            // Call findAll() method from JobData to get all jobs
             jobs = JobData.findAll();
         } else {
-            // Call findByColumnAndValue method
+            // Call findByColumnAndValue method to search for relevant jobs
             jobs = JobData.findByColumnAndValue(searchType, searchTerm);
         }
 
